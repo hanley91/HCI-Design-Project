@@ -1,0 +1,86 @@
+@import "MainTheme.css";
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#timetable {
+    margin-left: auto;
+    margin-right: auto;
+    display:table;
+    text-align: center;
+    color: black;
+    background: white;
+}
+
+.remove {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+//Enrollment CSS
+#courses {
+    margin: 0 auto;    
+}
+#SubjectName{
+    width:100px;
+}
+#courses th, #courses td {
+    min-width: 75px;
+    text-align: center;
+}
+.name, .date {
+    min-width: 150px !important;
+}
+span.checkboxlist {
+    text-align: left;
+    width:50px;
+    display:inline-block;
+}
+
+//Dialog CSS
+#leftFloat
+{
+    float: left;
+    width: 100px;
+}
+#rightFloat
+{
+    float: right;
+    width: 100px;
+}
+#modal-table {
+    margin-left:auto; 
+    margin-right:auto;
+    text-align: center;
+}
+#modal-table td {
+    min-width: 70px;
+}
+
+//Schedule CSS Theme
+#schedule {
+    table-layout: fixed;
+}
+#Spacer {
+    border-top-style: none !important;
+    border-bottom-style: none !important;
+}
+#schedule, th, td {
+   border: 1px solid black;
+}
+
+#schedule th{
+    text-align: center;
+    font-weight: bold;    
+}
+
+#schedule td{
+    text-align: center;
+    width: 5.5em;
+}
+
+#schedule td[id^='ID']{
+    text-align: right !important;
+}

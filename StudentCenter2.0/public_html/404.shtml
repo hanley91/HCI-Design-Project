@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Page Not Found</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <script src="http://cs4474.muscedere.ca/javascript/jquery.js"></script> 
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="http://cs4474.muscedere.ca/javascript/cookies.js"></script>
+        <script src="http://cs4474.muscedere.ca/javascript/authentication.js"></script>
+        <script src="http://cs4474.muscedere.ca/javascript/tooltip_show.js"></script>
+        
+        <LINK REL=StyleSheet HREF="http://cs4474.muscedere.ca/css/MainTheme.css" TYPE="text/css" MEDIA=screen>
+    </head>
+    <body>
+        <div id="ImageHeader"></div>
+        <hr>
+        <div id="TextHeader">
+            Page Not Found (404)
+        </div>
+        <hr>
+        <div id="NavBar">
+            
+        </div>
+        <br/>
+        <div id="MainActions">
+            <fieldset>
+                <h4>The following page does not exist on the server.</h4>
+                <div id ="ErrorBody">
+                    There are several possible reasons this may have happened:
+                    <ul>
+                        <li>The page may be broken or</li>
+                        <li></li>
+                    </ul>
+
+                </div>
+            </fieldset>
+        </div> 
+        <br/>
+        <br/>
+        <div id="Frequents">
+            <fieldset>
+                <legend>Your Frequent Tasks</legend>
+                &nbsp;
+                <input type="image" src="http://cs4474.muscedere.ca/images/schedule.png" alt="schedule"/>
+                &nbsp;
+                <input type="image" src="http://cs4474.muscedere.ca/images/financial.png" alt="financial"/>
+                &nbsp;
+                <input type="image" src="http://cs4474.muscedere.ca/images/address.png" alt="address"/>
+                &nbsp;
+                <input type="image" src="http://cs4474.muscedere.ca/images/grades.png" alt="grades"/>
+                &nbsp;
+            </fieldset>
+        </div>
+    </body>
+</html>

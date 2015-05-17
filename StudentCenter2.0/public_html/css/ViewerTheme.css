@@ -1,0 +1,44 @@
+@import url('http://cs4474.muscedere.ca/css/MainTheme.css');
+
+#options-border{
+    width: 100%;
+    border: none !important;
+}
+.option-table {
+   border: none !important;
+}
+
+#timetable {
+    margin-left: auto;
+    margin-right: auto;
+    display:table;
+    text-align: center;
+    color: black;
+    background: white;
+}
+
+//Schedule CSS Theme
+#schedule {
+    table-layout: fixed;
+}
+#Spacer {
+    border-top-style: none !important;
+    border-bottom-style: none !important;
+}
+#schedule, th, td {
+   border: 1px solid black;
+}
+
+#schedule th{
+    text-align: center;
+    font-weight: bold;    
+}
+
+#schedule td{
+    text-align: center;
+    width: 5.5em;
+}
+
+#schedule td[id^='ID']{
+    text-align: right !important;
+}

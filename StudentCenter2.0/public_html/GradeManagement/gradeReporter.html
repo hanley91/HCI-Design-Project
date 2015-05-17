@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Western Student Center 2.0 - Grade Report</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="../javascript/jquery.js"></script> 
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="../javascript/cookies.js"></script>
+        <script src="../javascript/authentication.js"></script>
+        <script type="text/javascript" src="../javascript/styleswitcher.js"></script>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+            // to fade in on page load
+            $("body").css("display", "none");
+            $("body").fadeIn(500); 
+            // to fade out before redirect
+            $('a').click(function(e){
+                redirect = $(this).attr('href');
+                e.preventDefault();
+                $('body').fadeOut(400, function(){
+                    window.location = redirect;
+                });
+            });
+            });
+        </script>
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/GradeManagement" />
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/LaunchPage.html" />
+        <LINK REL=StyleSheet HREF="../css/MainTheme.css" TYPE="text/css" MEDIA=screen title="default"/>
+        <link rel="alternate stylesheet" type="text/css" href="../css/darkTheme.css" title="alternate" />
+    </head>
+    <body>
+        <script>isLoggedIn(window.location.pathname);</script>
+        
+        <div id="ImageHeader"></div>
+        
+        <div id="TextHeader">
+            <hr/>
+            Grade Management - Grade Report
+            <div id="logout"><button type="button" class="logoutBtn" onclick="logout();">Logout</button></div>
+            <div id="settingBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/gears40.png" alt="settings" onclick=""/></div>
+            <div id="themeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/moon.png" alt="daynight" onclick="setActiveStyleSheet('alternate'); return false;"/></div>
+            <div id="themeBtn2"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/sun.png" alt="daynight" onclick="setActiveStyleSheet('default'); return false;"/></div>
+            <hr/>
+        </div>
+        
+        <div id="Breadcrumbs">
+        <uL>
+            <li><a href="http://cs4474.muscedere.ca/LaunchPage.html">Welcome Page</a></li>
+            <li><a href="http://cs4474.muscedere.ca/GradeManagement">Grade Management</a></li>
+            <li><a class="current">Grade Report</a></li>
+        </uL>
+            
+        </div>
+        <div id="TextHeader">
+        Grade Reporter
+        <br/>
+        This page is not fully implemented, and is here to illustrate site navigation
+        </div>
+    </body>
+</html>

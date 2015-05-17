@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Western Student Center 2.0 - Welcome</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#8A008A">
+        
+        <script src="javascript/jquery.js"></script> 
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="javascript/ajax_db.js"></script>
+        <script src="javascript/cookies.js"></script>
+        <script src="javascript/authentication.js"></script>
+        <script src="javascript/loader.js"></script>
+        
+        
+        <LINK REL=StyleSheet HREF="css/MainTheme.css" TYPE="text/css" MEDIA=screen>
+    </head>
+    <body>        
+       
+        <div id="ImageHeader"></div>
+        <hr>
+        <div id="TextHeader">Western Student Center 2.0</div>
+        <hr>
+        <div id="Login">
+            <form id="login_form" action="javascript:void(0);" onsubmit="verifyUser()">
+                <fieldset>
+                <legend>Sign In</legend>
+                <div id="error_text" class="error"></div>
+                <div class='login'>Username:</div>
+                <input id="username" class="LoginInput" type="text"
+                       placeholder="Student ID (ie. jdoe23)" />
+                <br/>
+                <div class='login'>Password:</div>
+                <input id="password" class="LoginInput" type="password"
+                       placeholder="Western Student Password" />
+                <br/>
+                <a id="Forgot" href="">Forgot Password?</a>
+                <br/>
+                <br/>
+                <input type="submit" class="LoginButton" value="Submit"/>
+                <br/>
+                </fieldset>
+            </form>
+        </div>
+        
+        <div id="FrequentLinks">
+        </div>
+       <script>notLoggedIn();</script>
+       <script>isAlreadyIn();</script>
+    </body>
+</html>

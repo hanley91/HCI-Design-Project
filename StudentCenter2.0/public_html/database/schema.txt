@@ -1,0 +1,73 @@
+CREATE TABLE User(
+	UserName VARCHAR(15) NOT NULL,
+	Fname VARCHAR(15) NOT NULL,
+	Lname VARCHAR(30) NOT NULL,
+	Role INT NOT NULL,
+	Password VARCHAR(30) NOT NULL,
+	PRIMARY KEY(UserName),
+	FOREIGN KEY (Role)
+		REFERENCES Roles(RoleD)
+			ON DELETE SET DEFAULT
+			ON UPDATE CASCADE
+	);
+
+CREATE TABLE Role(
+	RoleID INT NOT NULL,
+	RoleName VARCHAR(30) NOT NULL,
+	PRIMARY KEY (RoleID)
+	);
+
+CREATE TABLE Courses(
+	CourseNum INT NOT NULL,
+	CourseCode VARCHAR(15) NOT NULL,
+	Subject VARCHAR(30) NOT NULL,
+	CourseName VARCHAR(30) NOT NULL,
+	Semester INT NOT NULL,
+	Room VARCHAR(30) NOT NULL,
+	PRIMARY KEY (CourseNum)
+);
+
+CREATE TABLE Date(
+	DateID INT NOT NULL,
+	CourseNum INT NOT NULL,
+	DayOfWeek VARCHAR(30) NOT NULL,
+	StartTime VARCHAR(30),
+	EndTime VARCHAR(30),
+	PRIMARY KEY (DateID),
+	FOREIGN KEY (CourseNum)
+		REFERENCES Courses(CourseNum)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE
+);
+
+INSERT INTO Role VALUES
+	(0, "Undergrad"),
+	(1, "Graduate");
+	
+INSERT INTO User VALUES
+	("dhua3", "David", "Hua", 0, "pass1"),
+	("bmuscede", "Bryan", "Muscedere", 0, "pass2"),
+	("nrostaz", "Neda", "Rostamzadeh", 1, "pass3"),
+	("sabdul9", "Sheikh", "Abdullah", 1, "pass4"),
+	("shanley", "Spencer", "Hanley", 0, "pass5");
+
+INSERT INTO Courses VALUES
+	(32445, "1026A", "CompSci", "Introduction to Computer Science", 1, "UCC-38"),
+	(356, "1027B", "CompSci", "Computer Science Part 2", 2, "SCC-2028"),
+	(8567, "1000A", "PoliSci", "Political Science: An Objective View", 1, "MC-10"),
+	(3287, "2100A", "Classics", "Etymology in Greek and Latin", 1, "3M-10"),
+	(1234, "3465B", "English", "The Many Faces of Shakespeare", 2, "SEB-1033"),
+	(643, "1001A", "Biology", "Biology: An Introduction", 1, "SSC-10"),
+	(5322, "4474A", "CompSci", "Human-Computer Interaction", 1, "MC-100");
+	
+INSERT INTO Date VALUES
+	(1, 32445, "Mon", "2:00pm", "3:00pm"),
+	(2, 32445, "Wed", "1:30pm", "3:30pm"),
+	(3, 356, "Tues", "10:00am", "11:00am"),
+	(4, 356, "Fri", "9:00am", "10:00am"),
+	(5, 8567, "Tues", "2:00pm", "5:00pm"),
+	(6, 3287, "Thurs", "12:30pm", "3:30pm"),
+	(7, 1234, "Fri", "11:30am", "12:30pm"),
+	(8, 643, "Tues", "1:00pm", "3:00pm"),
+	(9, 643, "Thurs", "1:00pm", "3:00pm"),
+	(10, 5322, "Mon", "2:30pm", "5:30pm");

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Western Student Center 2.0 - Welcome Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="javascript/jquery.js"></script> 
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="javascript/cookies.js"></script>
+        <script src="javascript/authentication.js"></script>
+        <script src="javascript/tooltip_show.js"></script>
+        <script src="javascript/loader.js"></script>
+        <script src="javascript/themeSwitcher.js"></script>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+            // to fade in on page load
+            $("body").css("display", "none");
+            $("body").fadeIn(500); 
+            // to fade out before redirect
+            $('a').click(function(e){
+                redirect = $(this).attr('href');
+                e.preventDefault();
+                $('body').fadeOut(400, function(){
+                    window.location = redirect;
+                });
+            });
+            });
+        </script>
+        
+        <LINK REL=StyleSheet HREF="css/MainTheme.css" TYPE="text/css" MEDIA=screen title="default"/>
+        <link rel="alternate stylesheet" type="text/css" href="css/darkTheme.css" title="alternate" />
+        <script type="text/javascript" src="javascript/styleswitcher.js"></script>
+        
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/CourseManagement" />
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/FinancialManagement" />
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/GradeManagement" />
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/StudentManagement" />
+    </head>
+    <body>
+        <script>isLoggedIn(window.location.pathname);</script>
+        <div id="ImageHeader"></div>
+        
+        <div id="TextHeader">
+            <hr/>
+            Welcome,
+            <script language=javascript>
+                document.write(getCookie('name'));
+            </script>. Today is
+            <script language="javascript">
+                var today = new Date();
+                document.write(today.toDateString());
+            </script>
+            <div id="logout"><button type="button" class="logoutBtn" onclick="logout();">Logout</button></div>
+            <div id="settingBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/gears40.png" alt="settings" onclick=""/></div>
+            <div id="themeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/moon.png" alt="daynight" onclick="setActiveStyleSheet('alternate'); return false;"/></div>
+            <div id="themeBtn2"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/sun.png" alt="daynight" onclick="setActiveStyleSheet('default'); return false;"/></div>
+            <hr/>
+        </div>
+        <br/>
+        <script type="text/javascript">
+            function goToPage(){
+                var selected = document.getElementById("dropDown1");
+                var selText = selected.options[selected.selectedIndex].text;
+                    
+                    if (selText === "Main Page"){
+                        window.location.href='http://cs4474.muscedere.ca/CourseManagement/';
+                    }
+                    
+                    if (selText === "Browse Courses"){
+                        window.location.href='http://cs4474.muscedere.ca/CourseManagement/courseBrowser.html';
+                    }
+                    
+                    if (selText === "Course Enrollment"){
+                        window.location.href='http://cs4474.muscedere.ca/CourseManagement/courseEnrollment.html';
+                    }
+                    
+                    if (selText === "View Schedule"){
+                        window.location.href='http://cs4474.muscedere.ca/CourseManagement/scheduler.html';
+                    }
+                    
+                    if (selText === "Program Planner"){
+                        window.location.href='http://cs4474.muscedere.ca/CourseManagement/planner.html';
+                    }
+            }
+        </script>
+        <script type="text/javascript">
+            function goToPage2(){
+                var selected2 = document.getElementById("dropDown2");
+                var selText2 = selected2.options[selected2.selectedIndex].text;
+                    
+                    if (selText2 === "Main Page"){
+                        window.location.href='http://cs4474.muscedere.ca/StudentManagement/';
+                    }
+                    
+                    if (selText2 === "My Identity"){
+                        window.location.href='http://cs4474.muscedere.ca/StudentManagement/demographics.html';
+                    }
+                    
+                    if (selText2 === "My Academics"){
+                        window.location.href='http://cs4474.muscedere.ca/StudentManagement/academics.html';
+                    }
+                    
+                    if (selText2 === "My Contact Info"){
+                        window.location.href='http://cs4474.muscedere.ca/StudentManagement/contactInfo.html';
+                    }
+            }
+        </script>
+        <script type="text/javascript">
+            function goToPage3(){
+                var selected3 = document.getElementById("dropDown3");
+                var selText3 = selected3.options[selected3.selectedIndex].text;
+                
+                    if (selText3 === "Main Page"){
+                        window.location.href='http://cs4474.muscedere.ca/GradeManagement/';
+                    }
+                    
+                    if (selText3 === "Transcript"){
+                        window.location.href='http://cs4474.muscedere.ca/GradeManagement/transcript.html';
+                    }
+                    
+                    if (selText3 === "Grade Report"){
+                        window.location.href='http://cs4474.muscedere.ca/GradeManagement/gradeReporter.html';
+                    }
+                
+            }
+        </script>
+        <script type="text/javascript">
+            function goToPage4(){
+                var selected4 = document.getElementById("dropDown4");
+                var selText4 = selected4.options[selected4.selectedIndex].text;
+                    
+                    if (selText4 === "Main Page"){
+                        window.location.href='http://cs4474.muscedere.ca/FinancialManagement/';
+                    }
+                    
+                    if (selText4 === "Compensation"){
+                        window.location.href='http://cs4474.muscedere.ca/FinancialManagement/compensation.html';
+                    }
+                    
+                    if (selText4 === "My Statements"){
+                        window.location.href='http://cs4474.muscedere.ca/FinancialManagement/tuitionStatements.html';
+                    }
+                    
+                    if (selText4 === "Scholarships & Bursaries"){
+                        window.location.href='http://cs4474.muscedere.ca/FinancialManagement/scholarships.html';
+                    }
+            }
+        </script>
+        <div id="MainActions">
+            <fieldset>
+                <legend>What Do You Want To Do Today?</legend>
+                <div id="Tip">
+                    <span class="tipSpan">Select a task below.</span>        
+                </div>
+                <table>
+                    <tr>
+                        <td align="center">
+                            <div class="dropdown">
+                            <button data-ftrans="slide" type="button" 
+                            id="b1" 
+                            onMouseOver="elementShow('tipSpan', '<i>Course Management:</i><br>\
+                                                             Add, remove, and view courses you can enroll in.<br>\
+                                                             View your special permissions for course enrollment.<br>\n\
+                                                             View your current schedule and University holidays.<br>\n\
+                                                             Your program requirements and current program.');" 
+                            onMouseOut="elementHide('tipSpan')">
+                            Course Management
+                            </button>
+                                <ul class="dropdown-menu">
+                                <li><a href="http://cs4474.muscedere.ca/CourseManagement">Main Page</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/CourseManagement/courseBrowser.html">Browse Courses</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/CourseManagement/courseEnrollment.html">Course Enrollment</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/CourseManagement/scheduler.html">View Schedule</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/CourseManagement/planner.html">Program Planner</a></li>
+                                </ul>
+                            </div>                                             
+                        </td>  
+                        <td align="center">
+                            <div class="dropdown">
+                            <button data-ftrans="slide" type="button" 
+                            id="b2" 
+                            onMouseOver="elementShow('tipSpan', '<i>Student Management:</i><br>\
+                                                             View and edit your contact information.<br>\
+                                                             View and edit demographic information.<br>\n\
+                                                             Set important academic information.');" 
+                            onMouseOut="elementHide('tipSpan')">
+                            Student Management
+                            </button>
+                                <ul class="dropdown-menu">
+                                <li><a href="http://cs4474.muscedere.ca/StudentManagement">Main Page</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/StudentManagement/academics.html">My Academics</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/StudentManagement/demographics.html">My Identity</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/StudentManagement/contactInfo.html">My Contact Info</a></li>
+                                </ul>
+                            </div>                                            
+                        </td>
+                        <td align="center">
+                            <div class="dropdown">
+                            <button data-ftrans="slide" type="button" 
+                            id="b3" 
+                            onMouseOver="elementShow('tipSpan', '<i>Grade Management:</i><br>\
+                                                             View and print grade reports for your courses.<br>\
+                                                             Request official transcripts.<br>\n\
+                                                             Print unofficial transcripts.');" 
+                            onMouseOut="elementHide('tipSpan')">
+                            Grade Management
+                            </button>
+                                <ul class="dropdown-menu">
+                                <li><a href="http://cs4474.muscedere.ca/GradeManagement">Main Page</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/GradeManagement/gradeReporter.html">Grade Report</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/GradeManagement/transcript.html">View Transcript</a></li>
+                                </ul>
+                            </div>                                            
+                        </td>
+                        <td align="center">
+                            <div class="dropdown">
+                            <button data-ftrans="slide" type="button" 
+                            id="b4" 
+                            onMouseOver="elementShow('tipSpan', '<i>Financial Management:</i><br>\
+                                                             View your financial statements.<br>\
+                                                             Your scholarships and bursaries.<br>\n\
+                                                             Available financial compensation.');" 
+                            onMouseOut="elementHide('tipSpan')">
+                            Financial Management
+                            </button>
+                                <ul class="dropdown-menu">
+                                <li><a href="http://cs4474.muscedere.ca/FinancialManagement">Main Page</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/FinancialManagement/compensation.html">Compensation</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/FinancialManagement/scholarships.html">Scholarships</a></li>
+                                <li><a href="http://cs4474.muscedere.ca/FinancialManagement/tuitionStatements.html">Tuition Statements</a></li>
+                                </ul>
+                            </div>                                             
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                
+                
+            </fieldset>
+        </div> 
+        <br/>
+        <div id="divContainer">
+            <div class="wrapper">
+            </div>        
+        </div> 
+        <script src="javascript/bootstrap.min.js"></script>
+        <script src="javascript/jquery.eco-scroll.js"></script>        
+	<script>            
+                // Slider
+                $("#divContainer").ecoScroll({
+                itemWidth: 200,
+                itemHeight: 100,
+                rangeX : [0,13],
+                axis : "x",
+                snap : true,
+                onShow:function(oParam)
+                    {
+                       if(oParam.bNew){
+                   
+                        switch (oParam.x){
+                            case 0:{
+                                 oParam.$e.append("<b>Monday 04/06</b><br/>"); 
+                                 oParam.$e.append("CS4474b Lecture<br/>2:30-5:30PM<br/>");
+                                 break;
+                            };
+                            
+                            case 1:{
+                                 oParam.$e.append("<b>Tuesday 04/07</b><br/>");
+                                 oParam.$e.append("CS4457b<br/><b>Lecture Cancelled</b><br/>");
+                                 break;
+                            }
+                            
+                            case 2:{
+                                 oParam.$e.append("<b>Wednesday 04/08</b><br/>");
+                                 oParam.$e.append("CS4481b Lecture<br/>2:30-5:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 3:{
+                                 oParam.$e.append("<b>Thursday 04/09</b><br/>");
+                                 oParam.$e.append("Phil 2080 Lecture<br/>1:30-2:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 4:{
+                                 oParam.$e.append("<b>Friday 04/10</b><br/>"); 
+                                 oParam.$e.append("CS4474 Lecture<br/>2:30-5:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 5:{
+                                 oParam.$e.append("<b>Saturday 04/11</b><br/>");
+                                 oParam.$e.append("CS4471 Midterm<br/>9:00-12:00AM<br/>");
+                                 break;
+                            }
+                            
+                            case 6:{
+                                 oParam.$e.append("<b>Sunday 04/12</b><br/>");
+                                 oParam.$e.append("You have no events<br/>");
+                                 break;
+                            }
+                            
+                            case 7:{
+                                 oParam.$e.append("<b>Monday 04/13</b><br/>");
+                                 oParam.$e.append("CS4474b Lecture<br/>2:30-5:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 8:{
+                                 oParam.$e.append("<b>Tuesday 04/14</b><br/>");
+                                 oParam.$e.append("CS4457b Lecture<br/>1:30-2:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 9:{
+                                 oParam.$e.append("<b>Wednesday 04/15</b><br/>");
+                                 oParam.$e.append("CS4481b Lecture<br/>2:30-5:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 10:{
+                                 oParam.$e.append("<b>Thursday 04/16</b><br/>");
+                                 oParam.$e.append("Phil 2080 Lecture<br/>1:30-2:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 11:{
+                                 oParam.$e.append("<b>Friday 04/17</b><br/>");
+                                 oParam.$e.append("CS4474b Lecture<br/>2:30-5:30PM<br/>");
+                                 break;
+                            }
+                            
+                            case 12:{
+                                 oParam.$e.append("<b>Saturday 04/18</b><br/>");
+                                 oParam.$e.append("You have no events<br/>");
+                                 break;
+                            }
+                            
+                            case 13:{
+                                 oParam.$e.append("<b>Sunday 04/19</b><br/>");
+                                 oParam.$e.append("You have no events<br/>");
+                                 break;
+                            }
+                        }
+                    }
+   
+                    },
+                    
+                    onClick:function(oParam){
+                        
+                    }
+   
+                });       
+        </script>
+        <br/>
+        <div id="Frequents">
+            <fieldset>
+                <legend>Speed Dial</legend>
+                <table border="0">
+                    <tr>
+                        <td align="center"><input type="image" src="http://cs4474.muscedere.ca/images/schedule.png" onclick="parent.location='http://cs4474.muscedere.ca/CourseManagement/scheduler.html'" alt="schedule"/><br/>View Schedule<br/><div id="removeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/remove2.png" alt="remove" onclick=""/></div></td>
+                        <td align="center"><input type="image" src="http://cs4474.muscedere.ca/images/financial.png" onclick="parent.location='http://cs4474.muscedere.ca/FinancialManagement/compensation.html'" alt="financial"/><br/>Compensation<br/><div id="removeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/remove2.png" alt="remove" onclick=""/></div></td>
+                        <td align="center"><input type="image" src="http://cs4474.muscedere.ca/images/academics.png" onclick="parent.location='http://cs4474.muscedere.ca/StudentManagement/academics.html'" alt="academics"/><br/>My Academics<br/><div id="removeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/remove2.png" alt="remove" onclick=""/></div></td>
+                        <td align="center"><input type="image" src="http://cs4474.muscedere.ca/images/grades.png" onclick="parent.location='http://cs4474.muscedere.ca/GradeManagement/gradeReporter.html'" alt="grades"/><br/>Grade Reports<br/><div id="removeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/remove2.png" alt="remove" onclick=""/></div></td>
+                    </tr>
+                    
+                </table>
+            </fieldset>
+        </div>
+        <br/>
+        <div id="FrequentLinks"></div>
+        <div id="Breadcrumbs">
+        <uL>
+            <li><a class="current">Welcome Page</a></li>
+        </uL>
+        </div>
+    </body>
+</html>

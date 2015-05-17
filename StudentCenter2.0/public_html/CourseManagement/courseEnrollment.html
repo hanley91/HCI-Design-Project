@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Western Student Center 2.0 - Course Enrollment</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="../javascript/jquery.js"></script> 
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="../javascript/cookies.js"></script>
+        <script src="../javascript/authentication.js"></script>
+        <script src="../javascript/ajax_db.js"></script>
+        <script src="../javascript/timetable_manager.js"></script>
+        <script type="text/javascript" src="../javascript/styleswitcher.js"></script>
+       
+        <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+        <script>
+            $(document).ready(function(){
+            // to fade in on page load
+            $("body").css("display", "none");
+            $("body").fadeIn(500); 
+            // to fade out before redirect
+            $('a').click(function(e){
+                redirect = $(this).attr('href');
+                e.preventDefault();
+                $('body').fadeOut(400, function(){
+                    window.location = redirect;
+                });
+            });
+            });
+        </script>
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/CourseManagement/" />
+        <link rel="prefetch" href="http://cs4474.muscedere.ca/LaunchPage.html" />
+        <LINK REL=StyleSheet HREF="../css/EnrollmentTheme.css" TYPE="text/css" MEDIA=screen>
+        <LINK REL=StyleSheet HREF="../css/MainTheme.css" TYPE="text/css" MEDIA=screen title="default"/>
+        <link rel="alternate stylesheet" type="text/css" href="../css/darkTheme.css" title="alternate" />
+    </head>
+    <body onload="loadCourseData();">
+        <script>isLoggedIn(window.location.pathname);</script>
+        <div id="dialog" title="" style="display:none">
+            <h3 id="dlg-title">Confirm Enrollment Details:</h3>
+            <p id="dlg-text">Please confirm the details of this course before choosing to enroll. If 
+                you are not satisfied, press 'Cancel'.</p>
+            
+            <p id="hider">These courses will be added:</p>
+            <table id='modal-table'>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                </tr>
+            </table>
+            <br>
+            <div>
+                <button id='leftFloat' type="button" onclick="$( '#dialog' ).dialog( 'close' );">Cancel</button>       
+                <button id='rightFloat' type="button" onclick="">Enroll</button>
+            </div>
+        </div>
+        
+        <div id="ImageHeader"></div>
+        
+        <div id="TextHeader">
+            <hr/>
+            Course Management - Course Enrollment
+            <div id="logout"><button type="button" class="logoutBtn" onclick="logout();">Logout</button></div>
+            <div id="settingBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/gears40.png" alt="settings" onclick=""/></div>
+            <div id="themeBtn"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/moon.png" alt="daynight" onclick="setActiveStyleSheet('alternate'); return false;"/></div>
+            <div id="themeBtn2"><input type="image" id="set" src="http://cs4474.muscedere.ca/images/sun.png" alt="daynight" onclick="setActiveStyleSheet('default'); return false;"/></div>
+            <hr/>
+        </div>
+        
+        <div id="Breadcrumbs">
+        <uL>
+            <li><a href="http://cs4474.muscedere.ca/LaunchPage.html">Welcome Page</a></li>
+            <li><a href="http://cs4474.muscedere.ca/CourseManagement">Course Management</a></li>
+            <li><a class="current">Course Enrollment</a></li>
+        </uL>
+            
+        </div>
+       
+        <div id="MainActions">
+            <fieldset id="enrollFieldset">
+                <legend>Enroll in Courses</legend>
+                Search for courses and add them to your schedule.<br>Courses
+                    will automatically show up as you type.<br>Press 'Enroll' to
+                    enroll in them.<br><br>
+                <div id="searchPanel">
+                    <div>Search For Courses:</div>
+                    <input id="CourseName" type="text"
+                           onkeyup='searchForCourses();'
+                           placeholder="Enter Course Name or ID" />
+                    <br><br>
+                    <div>Filter By Subject:</div>
+                    <select id="SubjectName" onchange="searchForCourses();">
+                        <option>All Subjects</option>
+                    </select>
+                    <br><br>
+                    <div>Filter By Day of Week:</div>
+                    <div>
+                        <ul>
+                            <li class="checkbox-grid"><input id="MonCheck" type="checkbox" name="dow1" value="Mon" onchange="searchForCourses();" checked />
+                                <span>Monday</span></li>
+                            <li class="checkbox-grid"><input id="TuesCheck" type="checkbox" name="dow2" value="Tue" onchange="searchForCourses();" checked />
+                                <span>Tuesday</span></li>
+                            <li class="checkbox-grid"><input id="WedCheck" type="checkbox" name="dow3" value="Wed" onchange="searchForCourses();" checked />
+                                <span>Wednesday</span></li>
+                            <li class="checkbox-grid"><input id="ThursCheck" type="checkbox" name="dow4" value="Thurs" onchange="searchForCourses();" checked />
+                                <span>Thursday</span></li>
+                            <li class="checkbox-grid"><input id="FriCheck" type="checkbox" name="dow5" value="Fri" onchange="searchForCourses();" checked />
+                                <span>Friday</span></li>
+                        </ul>
+                    </div><br>
+                </div><br>
+                <hr>
+                <div id="resultsPanel">
+                    <div style="float:left;">Search Results:</div><br>
+                    <table id="courses">
+                        <tr>
+                            <th>Course Code</th>
+                            <th class="name">Course Name</th>
+                            <th>Subject</th>
+                            <th class="date">Date</th>
+                            <th>Options</th>
+                        </tr>
+                    </table>
+                    <div id="results">Please search above to see courses.</div>
+                </div>
+            </fieldset>
+        </div>
+        <br>
+        <div id="timetable"></div>
+    </body>
+</html>
